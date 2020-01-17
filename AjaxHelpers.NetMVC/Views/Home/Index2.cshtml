@@ -1,0 +1,32 @@
+﻿@model AjaxHelpers.NetMVC.Models.TodoItem
+@{
+    ViewBag.Title = "Index2";
+}
+
+<h2>Index2</h2>
+
+@using (Ajax.BeginForm("Index2",new AjaxOptions() {HttpMethod="Post",LoadingElementId="loading",LoadingElementDuration=300,UpdateTargetId="sonuc",InsertionMode=InsertionMode.InsertAfter }))
+{
+    <div class="col-md-2">
+    @Html.TextBoxFor(x => x.Text, new { @class = "form-control" })
+    </div>
+    <div class="col-md-10">
+        <button type="submit" class="btn btn-success">Gönder</button>
+    </div>
+}
+<br /><br />
+<hr />
+<div class="col-md-12">
+    <ul id="sonuc" class="list-group">
+        <li id="loading" class="list-group-item list-group-item-warning" style="display:none;">yükleniyor..</li>
+         @if(ViewBag.List != null){
+             foreach (AjaxHelpers.NetMVC.Models.TodoItem item in ViewBag.List)
+             {
+                 <li id="id_@item.Id" class="list-group-item">@item.Text</li>
+             }
+             {
+
+             }
+         }
+    </ul>
+</div>

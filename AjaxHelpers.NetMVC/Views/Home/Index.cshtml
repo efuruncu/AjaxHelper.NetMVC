@@ -1,0 +1,18 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+@*<a class="btn btn-success">Verileri Yükle</a>*@
+@Ajax.ActionLink("Verileri Yükle","LoadData",null,new AjaxOptions() {HttpMethod="GET",UpdateTargetId="list" ,
+    InsertionMode=InsertionMode.Replace,LoadingElementId="loading",LoadingElementDuration=300},new {@class="btn btn-success" } )
+<hr />
+
+<div id="loading" class="alert alert-warning" style="display:none;">
+    yükleniyor..
+</div>
+<ul id="list" class="list-group">
+
+</ul>

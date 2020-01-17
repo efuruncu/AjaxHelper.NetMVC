@@ -1,0 +1,20 @@
+﻿@model List<string>
+
+@foreach (string item in Model)
+{
+    <li id="id_@Model.IndexOf(item)" class="list-group-item">
+        @Ajax.ActionLink("Sil", "RemoveData", new { id = Model.IndexOf(item) }, new AjaxOptions()
+        {
+            LoadingElementId = "loading",
+            LoadingElementDuration = 300,
+            HttpMethod = "GET",
+            InsertionMode = InsertionMode.ReplaceWith,
+            UpdateTargetId="id_"+Model.IndexOf(item)
+        },
+       new { @class = "btn btn-danger btn-xs" })
+
+        @*<a href="/Home/RemoveData/@Model.IndexOf(item)" class="btn btn-danger btn-xs">Sil</a>*@
+        &nbsp;&nbsp;
+        @item
+    </li>
+}
